@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Won!</title>
+    <title>Valentine's Rock Paper Scissors</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,30 +28,38 @@
             align-items: center;
         }
 
-        .win-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .bunny {
+            width: 120px;
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
         }
 
-        .bunny-gif {
-            width: 100px;
-        }
-
-        .win-msg {
-            width: 180px;
-            margin-top: -5px;
+        .start-btn {
+            background: url('img/start.png') no-repeat center;
+            background-size: contain;
+            width: 150px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 65%;
+            transform: translateY(-50%);
         }
     </style>
 </head>
 <body>
 
     <div class="game-container">
-        <div class="win-box">
-            <img src="img/bunnywin.gif" alt="Bunny Celebration" class="bunny-gif">
-            <img src="img/bunnywin.png" alt="You won!" class="win-msg">
-        </div>
+        <img src="img/bunny.png" alt="Bunny" class="bunny">
+        <button class="start-btn" onclick="startGame()"></button>
     </div>
+
+    <script>
+        function startGame() {
+            window.location.href = "pick.html"; // Redirection vers la page du jeu
+        }
+    </script>
 
 </body>
 </html>
