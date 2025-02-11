@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Won!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            width: 333px;
+            height: 424px;
+            background: url('img/bg.png') no-repeat center;
+            background-size: contain;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .win-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bunny-gif {
+            width: 120px;
+            margin-top: -50px;
+        }
+
+        .win-msg {
+            width: 180px;
+            margin-top: -5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <div class="win-box">
+            <img src="img/tieorloss.gif" alt="Bunny Celebration" class="bunny-gif">
+            <img src="img/bunnyloose.png" alt="You won!" class="win-msg">
+        </div>
+    </div>
+
+</body>
+</html>

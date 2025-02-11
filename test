@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+        }
+        h1 {
+            color: #ff4d4d;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d63333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Valentine's Rock Paper Scissors 💖</h1>
+    <p>Choose Rock, Paper, or Scissors!</p>
+    <div class="btn-container">
+        <button onclick="playGame('rock')">Rock</button>
+        <button onclick="playGame('paper')">Paper</button>
+        <button onclick="playGame('scissors')">Scissors</button>
+    </div>
+    <p id="result"></p>
+    
+    <script>
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function getWinner(player, computer) {
+            if (player === computer) {
+                return "It's a tie! 💕";
+            } else if (
+                (player === "rock" && computer === "scissors") ||
+                (player === "scissors" && computer === "paper") ||
+                (player === "paper" && computer === "rock")
+            ) {
+                return "You win! ❤️ Here's a Valentine for you! 💌";
+            } else {
+                return "You lose! But I'll still be your Valentine! 😊";
+            }
+        }
+
+        function playGame(playerChoice) {
+            const computerChoice = getComputerChoice();
+            const result = getWinner(playerChoice, computerChoice);
+            document.getElementById("result").innerHTML = `Your choice: ${playerChoice} 🆚 Computer's choice: ${computerChoice}<br><br>${result}`;
+        }
+    </script>
+</body>
+</html>

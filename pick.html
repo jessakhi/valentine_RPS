@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            width: 333px;
+            height: 424px;
+            background: url('img/bg.png') no-repeat center;
+            background-size: contain;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Bunny "No Peeking" */
+        .bunny-msg {
+            width: 180px;
+            margin-top: 75px;
+        }
+
+        /* Selection Box */
+        .pick-box {
+            width: 169px;
+            background: rgba(255, 255, 255, 0);
+            border-radius: 5px;
+            padding: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -10px;
+        }
+
+        /* Choices */
+        .choices {
+            display: flex;
+            justify-content: space-between;
+            gap : 3px;
+            width: 90%;
+            padding: 5px 5px;
+        }
+
+        .choice-img {
+            width: 52px; /* Rend les boutons plus larges */
+            height: 62px;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: center; /* Centre les boutons */
+            gap: 0px;
+            width: 100px;
+            padding: 1px 5px;
+        }
+        .choice-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin : -5.7px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .choice-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-img {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <img src="img/bunny2.png" alt="No Peeking" class="bunny-msg">
+
+        <div class="pick-box">
+            <div class="choices">
+                <img src="img/rock.png" class="choice-img">
+                <img src="img/paper.png" class="choice-img">
+                <img src="img/scissors.png" class="choice-img">
+            </div>
+
+            <div class="btn-container">
+                <button class="choice-btn" onclick="selectChoice('rock')">
+                    <img src="img/rockmsg.png" class="btn-img">
+                </button>
+                <button class="choice-btn" onclick="selectChoice('paper')">
+                    <img src="img/papermsg.png" class="btn-img">
+                </button>
+                <button class="choice-btn" onclick="selectChoice('scissors')">
+                    <img src="img/scissorsmsg.png" class="btn-img">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+
+        function selectChoice(playerChoice) {
+            const computerChoice = getComputerChoice(); // Generate computer choice
+            localStorage.setItem("playerChoice", playerChoice); // Store player choice
+            localStorage.setItem("computerChoice", computerChoice); // Store computer choice
+
+            console.log("Player choice saved:", playerChoice);
+            console.log("Computer choice saved:", computerChoice);
+
+            
+            window.location.href = "think.html"; 
+        }
+    </script>
+
+</body>
+</html>

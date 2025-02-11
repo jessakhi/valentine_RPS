@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-container {
+            width: 333px;
+            height: 424px;
+            background: url('img/bg.png') no-repeat center;
+            background-size: cover;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .hidden {
+            display: none;
+        }
+        .bunny {
+            width: 100px;
+        }
+        .start-btn {
+            background: url('img/start.png') no-repeat center;
+            background-size: contain;
+            width: 150px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-container button {
+            font-size: 16px;
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #status {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #d63333;
+        }
+        #result {
+            font-size: 16px;
+            color: #d63333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Start Screen -->
+    <div class="game-container" id="start-screen">
+        <img src="img/bunny.png" alt="Bunny" class="bunny">
+        <button class="start-btn" onclick="startGame()"></button>
+    </div>
+
+    <!-- Game Screen -->
+    <div class="game-container hidden" id="game-screen">
+        <h1>Valentine's Rock Paper Scissors 💖</h1>
+        <p id="status">Choose Rock, Paper, or Scissors!</p>
+        <div class="btn-container">
+            <button onclick="playGame('rock')">Rock</button>
+            <button onclick="playGame('paper')">Paper</button>
+            <button onclick="playGame('scissors')">Scissors</button>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function startGame() {
+            document.getElementById("start-screen").classList.add("hidden");
+            document.getElementById("game-screen").classList.remove("hidden");
+        }
+
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function getWinner(player, computer) {
+            if (player === computer) return "It's a tie! 💕";
+            if (
+                (player === "rock" && computer === "scissors") ||
+                (player === "scissors" && computer === "paper") ||
+                (player === "paper" && computer === "rock")
+            ) {
+                return "You win! ❤️ Here's a Valentine for you! 💌";
+            }
+            return "You lose! But I'll still be your Valentine! 😊";
+        }
+
+        function playGame(playerChoice) {
+            const computerChoice = getComputerChoice();
+            const statusText = document.getElementById("status");
+            const resultText = document.getElementById("result");
+
+            statusText.innerHTML = "Rock...";
+            setTimeout(() => {
+                statusText.innerHTML = "Paper...";
+                setTimeout(() => {
+                    statusText.innerHTML = "Scissors...";
+                    setTimeout(() => {
+                        const result = getWinner(playerChoice, computerChoice);
+                        statusText.innerHTML = `Your choice: ${playerChoice} 🆚 Computer's choice: ${computerChoice}`;
+                        resultText.innerHTML = result;
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinking...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            width: 333px;
+            height: 424px;
+            background: url('img/bg.png') no-repeat center;
+            background-size: contain;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bunny {
+            width: 180px;
+        }
+
+        .choice {
+            width: 100px;
+            height: auto; /* Ensure it maintains aspect ratio */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 20px; /* Add spacing below bunny */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <img src="img/bunnythink.png" class="bunny">
+        <img id="computer-choice" class="choice">
+    </div>
+
+    <script>
+        const computerChoice = localStorage.getItem("computerChoice");
+        console.log("Computer's choice received in think.html:", computerChoice);
+
+
+        const choiceImages = {
+            "rock": "img/rock.png",
+            "paper": "img/paper.png",
+            "scissors": "img/scissors.png"
+        };
+
+        // Ensure the correct image is displayed
+        setTimeout(() => {
+            const choiceImg = document.getElementById("computer-choice");
+            choiceImg.src = choiceImages[computerChoice];
+            choiceImg.style.opacity = 1;
+        }, 2000);
+
+        // Redirect after showing the choice
+        setTimeout(() => {
+            const playerChoice = localStorage.getItem("playerChoice");
+            
+            if (playerChoice === computerChoice) {
+                window.location.href = "draw.html"; // Tie screen
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "scissors" && computerChoice === "paper") ||
+                (playerChoice === "paper" && computerChoice === "rock")
+            ) {
+                window.location.href = "win.html"; // Player wins
+            } else {
+                window.location.href = "lose.html"; // Computer wins
+            }
+        }, 5000);
+
+    </script>
+
+</body>
+</html>
