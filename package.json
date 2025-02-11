@@ -1,0 +1,21 @@
+{
+  "name": "valentine_rps",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessakhi/valentine_RPS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessakhi/valentine_RPS/issues"
+  },
+  "homepage": "https://github.com/jessakhi/valentine_RPS#readme",
+  "description": ""
+}
