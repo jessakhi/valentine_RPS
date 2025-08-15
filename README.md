@@ -1,8 +1,10 @@
 # Valentine Rock, Paper, Scissors Game!  
 
 Welcome to this small project I did for Valentine's day 
-link : https://valentine-rps-1.onrender.com/
+
 This little game was made for fun, with a cute interface and some special animations to brighten your day. 
+---
+link : https://valentine-rps-1.onrender.com/
 ---
 
 ## 💖 How to Play  
